@@ -30,7 +30,8 @@ void main() {
     // sphere coords, rand radius, offset y+0.5 for snoise vel
     vec2 coords = vUv;
     coords.x = coords.x * M_2PI - M_PI;
-    coords.y = mod(coords.y+0.5, 1.0) * M_PI;
+    coords.y = coords.y*2.-1.;
+    coords.y= acos(sqrt(1.-coords.y*coords.y))*sign(coords.y);
     vec3 sphereCoords = vec3(
         sin(coords.y) * cos(coords.x),
         cos(coords.y),
